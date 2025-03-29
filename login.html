@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Login Page</title>
+  <style>
+    :root {
+      --primary-color: #4f46e5;
+      --primary-hover: #4338ca;
+      --text-color: #1f2937;
+      --bg-color: #f9fafb;
+      --input-bg: #ffffff;
+      --border-color: #d1d5db;
+      --error-color: #ef4444;
+      --social-google: #ea4335;
+      --social-twitter: #1da1f2;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 1rem;
+    }
+    
+    .login-container {
+      width: 100%;
+      max-width: 420px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 2.5rem;
+    }
+    
+    .login-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .login-header h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .login-header p {
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      background: var(--input-bg);
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+    }
+    
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .remember-me {
+      display: flex;
+      align-items: center;
+    }
+    
+    .remember-me input {
+      margin-right: 0.5rem;
+    }
+    
+    .forgot-password a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+    
+    .login-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .login-btn:hover {
+      background-color: var(--primary-hover);
+    }
+    
+    .social-divider {
+      display: flex;
+      align-items: center;
+      margin: 2rem 0;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+    
+    .social-divider::before,
+    .social-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background-color: var(--border-color);
+    }
+    
+    .social-divider::before {
+      margin-right: 1rem;
+    }
+    
+    .social-divider::after {
+      margin-left: 1rem;
+    }
+    
+    .social-login {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background-color: white;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    
+    .social-btn:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .social-btn.google {
+      color: var(--social-google);
+    }
+    
+    .social-btn.twitter {
+      color: var(--social-twitter);
+    }
+    
+    .social-icon {
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .signup-link {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    
+    .signup-link a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+  <!-- Font Awesome for icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-header">
+      <h1>Welcome Back</h1>
+      <p>Please enter your credentials to login</p>
+    </div>
+
+    <form id="login-form">
+      <div class="form-group">
+        <label for="username">Username or Email</label>
+        <input type="text" id="username" name="username" required placeholder="Enter your username or email">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required placeholder="Enter your password">
+      </div>
+
+      <div class="remember-forgot">
+        <div class="remember-me">
+          <input type="checkbox" id="remember" name="remember">
+          <label for="remember">Remember me</label>
+        </div>
+        <div class="forgot-password">
+          <a href="#">Forgot password?</a>
+        </div>
+      </div>
+
+      <button type="submit" class="login-btn">Sign In</button>
+    </form>
+
+    <div class="social-divider">Or continue with</div>
+
+    <div class="social-login">
+      <button class="social-btn google" onclick="socialLogin('google')">
+        <i class="fab fa-google social-icon"></i>
+        Google
+      </button>
+      <button class="social-btn twitter" onclick="socialLogin('twitter')">
+        <i class="fab fa-twitter social-icon"></i>
+        Twitter
+      </button>
+    </div>
+
+    <div class="signup-link">
+      Don't have an account? <a href="#">Sign up</a>
+    </div>
+  </div>
+
+  <script>
+    // Form validation and submission
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      if (username && password) {
+        // Normally you would send this data to your server
+        console.log('Login attempt:', { username, password });
+        alert('Login submitted! In a real app, this would connect to your backend.');
+      }
+    });
+
+    // Social media login handlers
+    function socialLogin(provider) {
+      // In a real app, this would redirect to OAuth flow
+      console.log('Social login with:', provider);
+      alert(`${provider.charAt(0).toUpperCase() + provider.slice(1)} login initiated! In a real app, this would start the OAuth flow.`);
+    }
+  </script>
+</body>
+</html>
